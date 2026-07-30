@@ -2,10 +2,10 @@ class Plant:
 
     def __init__(self, name: str, height: float, age_var: int) -> None:
         self.name = name
-        self._height = None
-        self.height = height
-        self._age_var = None
-        self.age_var = age_var
+        self._height = 0.0
+        self._age_var = 0
+        self.set_height(height)
+        self.set_age(age_var)
         print("Plant created: ", end="")
         print(f"{self.name}: {self.height}cm, {self.age_var} days old")
 

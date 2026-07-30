@@ -2,10 +2,10 @@ class Plant:
 
     def __init__(self, name: str, height: float, age_var: int) -> None:
         self.name = name
-        self._height = None
-        self.height = height
-        self._age_var = None
-        self.age_var = age_var
+        self._height = 0.0
+        self._age_var = 0
+        self.set_height(height)
+        self.set_age(age_var)
 
     def show(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.age_var} days old")
@@ -45,14 +45,18 @@ class Flower(Plant):
                  age_var: int, color: str) -> None:
         super().__init__(name, height, age_var)
         self.color = color
+        self.isblooming = False
 
     def bloom(self) -> None:
-        super().show()
-        print(f" Color: {self.color}\n Rose is blooming beautifully!")
+        self.isblooming = True
 
     def show(self) -> None:
         super().show()
-        print(f" Color: {self.color}\n Rose has not bloomed yet")
+        print(f" Color: {self.color}")
+        if self.isblooming == True:
+            print(f" {self.name} is blooming beautifully!")
+        else:
+            print(f" {self.name} has not bloomed yet")
 
 
 class Tree(Plant):
@@ -99,6 +103,7 @@ def main() -> None:
     rose.show()
     print("[asking the rose to bloom]")
     rose.bloom()
+    rose.show()
     print()
     print("=== Tree")
     oak = Tree("Oak", 200.0, 365, 5.0)
