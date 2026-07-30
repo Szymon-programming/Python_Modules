@@ -42,10 +42,6 @@ class Plant:
 
 
 def main() -> None:
-    # plant2 = Plant("Sunflower", 80.0, 45)
-    # plant3 = Plant("Cactus", 15.0, 120)
-    # plant4 = Plant("Oak", 200.0, 365)
-    # plant5 = Plant("Fern", 15.0, 120)
     print("=== Garde Security System ===")
     plant1 = Plant("Rose", 25.0, 30)
     print()
@@ -54,10 +50,6 @@ def main() -> None:
     print()
     plant1.set_height(-6)
     plant1.set_age(-6)
-    # plant2.show()
-    # plant3.show()
-    # plant4.show()
-    # plant5.show()
     print("Current state: ", end="")
     plant1.show()
 
