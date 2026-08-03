@@ -1,9 +1,39 @@
 import math
 
 def get_player_pos():
-	try:
-		x, y, z = int(input("Enter new coordinates as floats in format 'x,y,z' : "))
-		cords = (x,y,z)
-		return cords
-	except:
-		
+    while True:
+        cords = (input("Enter new coordinates as floats"
+                "in format 'x,y,z': ")).split(',')
+        return tuple(map(float, cords))
+
+
+def calculate_center_distance(cords1):
+    x1, y1, z1 = cords1
+    result = math.sqrt(x1**2 + y1**2 + z1**2)
+    return round(result, 4)
+
+
+def distance_between(cords1, cords2):
+    x1, y1, z1 = cords1
+    x2, y2, z2 = cords2
+    result = math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+    return round(result, 4)
+
+def main():
+    print("=== Game Coordinate System ===")
+    print()
+    print("Get a first set of coordinates")
+    cords1 = get_player_pos()
+    x1, y1, z1 = cords1
+    print(f"Got a first tuple: {x1, y1, z1}")
+    print(f"It includes: X={x1}, Y={y1}, Z={z1}")
+    center_dist = calculate_center_distance(cords1)
+    print(f"Distance to center: {center_dist}")
+    print()
+    print("Get a second set of coordinates")
+    cords2 = get_player_pos()
+    distance = distance_between(cords1, cords2)
+    print(f"Distance between the 2 sets of coordinates: {distance}")
+
+if __name__ == "__main__":
+    main()
