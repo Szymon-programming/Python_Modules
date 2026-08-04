@@ -1,10 +1,27 @@
 import math
 
 def get_player_pos():
-    while True:
-        cords = (input("Enter new coordinates as floats"
-                "in format 'x,y,z': ")).split(',')
-        return tuple(map(float, cords))
+	while True:
+		try:
+			cords = (input("Enter new coordinates as floats in format 'x,y,z': ")).split(',')
+			if len(cords) < 3:
+				raise SyntaxError
+			i = 0
+			while i < 3:
+				try:
+					cords[i] = float(cords[i])
+				except ValueError as e:
+					raise ValueError(f"'{cords[i]}': {e}")
+				i = i + 1
+			x = cords[0]
+			y = cords[1]
+			z = cords[2]
+			cord = (x,y,z)
+			return cord
+		except ValueError as e:
+			print(f"Error on parameter {e}")
+		except SyntaxError:
+			print("Invalid syntax")
 
 
 def calculate_center_distance(cords1):
